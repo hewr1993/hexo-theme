@@ -90,6 +90,24 @@ iframe, .fluid-width-video-wrapper { display: block; margin: 1.6em 0; }
 /* When a video is inside the fitvids wrapper, drop the
 margin on the iframe, cause it breaks stuff. */
 .fluid-width-video-wrapper iframe { margin: 0; }
+.ease-in-out {
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.blur {
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+     
+    -webkit-filter: blur(5px); /* Chrome, Opera */
+       -moz-filter: blur(5px);
+        -ms-filter: blur(5px);   
+            filter: blur(5px);
+     
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5, MakeShadow=false); /* IE6~IE9 */
+}
+
 /* ==========================================================================
    3. Utilities - These things get used a lot
    ========================================================================== */
@@ -106,15 +124,27 @@ margin on the iframe, cause it breaks stuff. */
 
 /* Big cover image on the home page */
 .site-head { position: relative; display: table; width: 100%; height: 60%; text-align: center; color: #fff; background:no-repeat center center; background-size: cover; }
-.content { background: #fff;padding: 10px 0 0 0; }
+.surface-panel { background: rgba(255, 255, 255, 0.9); }
+.surface-panel:before{
+	content: "";
+	height: 6px;
+	width: 100%;
+	display: block;
+	position: fixed;
+	background-image: linear-gradient(to left, #1B4A77, #1B4A77 5%, #30A2BC 5%, #30A2BC 7%, #FB5C3C 7%, #FB5C3C 11%, #F6C655 11%, #F6C655 18%, #B7C65E 18%, #B7C65E 20%, #1B4A77 20%, #1B4A77 25%, #30A2BC 25%, #30A2BC 29%, #FB5C3C 29%, #FB5C3C 31%, #F6C655 31%, #F6C655 38%, #B7C65E 38%, #B7C65E 43%, #1B4A77 43%, #1B4A77 45%, #30A2BC 45%, #30A2BC 50%, #FB5C3C 50%, #FB5C3C 51%, #F6C655 51%, #F6C655 53%, #B7C65E 53%, #B7C65E 60%, #1B4A77 60%, #1B4A77 65%, #30A2BC 65%, #30A2BC 67%, #FB5C3C 67%, #FB5C3C 75%, #F6C655 75%, #F6C655 81%, #B7C65E 81%, #B7C65E 89%, #1B4A77 89%, #1B4A77 93%, #30A2BC 93%, #30A2BC 95%, #FB5C3C 95%, #FB5C3C);
+}
+.content { background: transparent;padding: 10px 0 0 0; }
 .blog-logo { text-decoration: none; }
 /* Yo-logo. Yolo-go. Upload one in ghost/settings/ */
-.blog-logo img { display: block; max-height: 100px;max-width: 100px; width: auto; margin: 0 auto; line-height: 0; }
+.blog-logo img { display: block; max-height: 120px;max-width: 120px; border-radius: 120px; width: auto; margin: 0 auto; line-height: 0; border: 3px solid grey; }
 /* The details of your blog. Defined in ghost/settings/ */
 .blog-title { margin: 10px 0 10px 0; font-size: 5rem; letter-spacing: -1px; font-weight: bold; text-shadow: 0 1px 6px rgba(0,0,0,0.1); }
 .blog-description { margin: 0; font-size: 1.8rem; line-height: 1.5em; font-weight: 300; font-family: 'Noto Serif', serif; letter-spacing: 0; text-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+#showMenu { background: transparent; }
+#showMenu:hover { background: #ff706c; }
 /* Every post, on every page, gets this style on its <article> tag */
-.post { position: relative; width: 80%; max-width: 700px; margin: 4rem auto; padding-bottom: 4rem; border-bottom: #EBF2F6 1px solid; word-break: break-word; hyphens: auto; }
+.post { position: relative; width: 80%; max-width: 700px; margin: 4rem auto; border-bottom: #EBF2F6 1px solid; word-break: break-word; hyphens: auto; background: #fff; padding: 30px 45px 35px 45px; border-radius: 3px; box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4); }
+.post:hover { box-shadow: 0 3px 5px rgba(25, 25, 34, 0.4); }
 /* Add a little circle in the middle of the border-bottom on our .post
    just for the lolz and stylepoints.
 .post:after {
@@ -137,6 +167,15 @@ margin on the iframe, cause it breaks stuff. */
 .post-title { margin: 0; }
 .post-title a { text-decoration: none; }
 .post-excerpt p { margin: 1.6rem 0 0 0; font-size: 0.9em; line-height: 1.6em; }
+.excerpt-link {
+	display: inline-block;
+	background: #50585D;
+	padding: 8px 15px;
+	color: #fff;
+	font-size: 0.85em;
+	line-height: 1;
+}
+.excerpt-link:hover { background-color: #3498DB; color: #fff; text-decoration: none; }
 .post-meta { display: inline-block; margin: 0 0 5px 0; font-size: 1.5rem; color: #9EABB3; }
 .post-meta a { color: #9EABB3; text-decoration: none; }
 .post-meta a:hover { color: #2980B9;text-decoration: underline; }
@@ -229,7 +268,7 @@ pre .chunk { color: #aaa }
    8. Footer - The bottom of every page
    ========================================================================== */
 
-.site-footer { position: relative; margin: 8rem 0 0 0; padding: 4rem 0; border-top: #EBF2F6 1px solid; font-family: 'Open Sans', sans-serif; font-size: 1.3rem; line-height: 1.7em; color: #BBC7CC; text-align: center; background: #f8f8f8; }
+.site-footer { position: relative; margin: 8rem 0 0 0; padding: 4rem 0; border-top: #EBF2F6 1px solid; font-family: 'Open Sans', sans-serif; font-size: 1.3rem; line-height: 1.7em; color: #BBC7CC; text-align: center; background-image: linear-gradient(135deg, #1B4A77 0%, #30A2BC 100%); }
 .site-footer a { color: #BBC7CC; text-decoration: underline; }
 .site-footer a:hover { color: #50585D; }
 .poweredby .icon-ghost { font-weight: 700; text-decoration: none; }

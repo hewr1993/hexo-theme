@@ -1,10 +1,10 @@
 
 <main class="content" role="main">
   <% page.posts.each(function(post) { %>
-  <article class="post">
+  <article class="post ease-in-out">
     <header class="post-header">
-      <%- partial('post/meta', {post: post}) %>
       <h2 class="post-title"><a href="<%- config.root %><%- post.path %>"><%- post.title %></a></h2>
+      <%- partial('post/meta', {post: post}) %>
     </header>
     <section class="post-excerpt">
       <p>
@@ -16,7 +16,7 @@
       </p>
       <% if (theme.excerpt_link) { %>
       <p>
-          <a href="<%- config.root %><%- post.path %>" class="excerpt-link"><%= theme.excerpt_link %>...</a>
+          <a href="<%- config.root %><%- post.path %>" class="excerpt-link ease-in-out"><%= theme.excerpt_link %></a>
       </p>
       <% } %>
     </section>
