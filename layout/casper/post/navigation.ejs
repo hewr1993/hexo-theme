@@ -1,12 +1,12 @@
 <nav class="pagination" role="pagination">
     <% if (page.prev) { %>
-    <a class="newer-posts" href="<%- url_for(page.prev.path) %>">
+    <a class="newer-posts ease-in-out" href="<%- url_for(page.prev.path) %>">
         ← <%- page.prev.title %>
     </a>
     <% } %>
-    <span class="icon-logo">•</span>
+    <span class="icon-logo1">•</span>
     <% if (page.next) { %>
-    <a class="older-posts" href="<%- url_for(page.next.path) %>">
+    <a class="older-posts ease-in-out" href="<%- url_for(page.next.path) %>">
         <%- page.next.title %> →
     </a>
     <% } %>
