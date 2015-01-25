@@ -1,13 +1,15 @@
 <span class="post-meta">
-      <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
-		  <i class="fi-clock small"></i>
-          <%= date(post.date, null) %>
-      </time>
-    <% if (post.tags && post.tags.length){ %>
-    <% count = post.tags.length %>
-		  <i class="fi-price-tag small" style="margin-left:10px;"></i>
-    <% post.tags.forEach(function(tag, index) { %>
-    <a href='<%= config.root + tag.path %>'><%= tag.name %></a><% if (count !== index+1) { %>,<% } %>
-    <% }); %>
-    <% } %>
+	<div class="pin-container">
+	</div>
+	<time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
+	<i class="fi-clock small"></i>
+			<%= date(post.date, null) %>
+	</time>
+	<% if (post.tags && post.tags.length){ %>
+	<% count = post.tags.length %>
+		<i class="fi-price-tag small" style="margin-left:10px;"></i>
+	<% post.tags.forEach(function(tag, index) { %>
+	<a href='<%= config.root + tag.path %>'><%= tag.name %></a><% if (count !== index+1) { %>,<% } %>
+	<% }); %>
+	<% } %>
 </span>

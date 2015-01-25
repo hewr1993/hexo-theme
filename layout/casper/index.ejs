@@ -1,31 +1,44 @@
 
 <main class="content" role="main">
-  <% page.posts.each(function(post) { %>
-  <article class="post ease-in-out">
-    <header class="post-header">
-      <h2 class="post-title"><a href="<%- config.root %><%- post.path %>"><%- post.title %></a></h2>
-      <%- partial('post/meta', {post: post}) %>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      <% if (post.excerpt){ %>
-        <%- post.excerpt %>
-      <% } else { %>
-        <%- post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220) %>
-      <% } %>
-      </p>
-      <% if (theme.excerpt_link) { %>
-      <p>
-          <a href="<%- config.root %><%- post.path %>" class="excerpt-link ease-in-out"><%= theme.excerpt_link %></a>
-      </p>
-      <% } %>
-    </section>
-  </article>
-  <% }); %>
-  <nav class="pagination" role="pagination">
-    <% if (page.prev) { %><a class="newer-posts ease-in-out" href="<%- url_for(page.prev_link) %>">← Newer Posts</a><% } %>
-    <span class="page-number">Page <%- page.current %> of <%- page.total %></span>
-    <% if (page.next) { %><a class="older-posts ease-in-out" href="<%- url_for(page.next_link) %>">Older Posts →</a><% } %>
-  </nav>
+	<% page.posts.each(function(post) { %>
+	<article class="post ease-in-out">
+		<% if (post.photos.length > 0) { %>
+	<div class="pin-container slider-flexslider">
+		<section class="flexslider">
+			<ul class="slides">
+		<% post.photos.forEach(function(photo, index) { %>
+			<li style="overflow:hidden"><a href="<%= photo %>" target="_blank"><img src="<%= photo %>" /></a></li>
+		<% }); %>
+			</ul>
+		</section>
+	</div>
+	<% } %>
+	<div class="post-panel">
+		<header class="post-header">
+			<h2 class="post-title"><a href="<%- config.root %><%- post.path %>"><%- post.title %></a></h2>
+			<%- partial('post/meta', {post: post}) %>
+		</header>
+		<section class="post-excerpt">
+			<p>
+			<% if (post.excerpt){ %>
+			<%- post.excerpt %>
+			<% } else { %>
+			<%- post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220) %>
+			<% } %>
+			</p>
+			<% if (theme.excerpt_link) { %>
+			<p>
+				<a href="<%- config.root %><%- post.path %>" class="excerpt-link ease-in-out"><%= theme.excerpt_link %></a>
+			</p>
+			<% } %>
+		</section>
+	</div>
+	</article>
+	<% }); %>
+	<nav class="pagination" role="pagination">
+		<% if (page.prev) { %><a class="newer-posts ease-in-out" href="<%- url_for(page.prev_link) %>">← Newer Posts</a><% } %>
+		<span class="page-number">Page <%- page.current %> of <%- page.total %></span>
+		<% if (page.next) { %><a class="older-posts ease-in-out" href="<%- url_for(page.next_link) %>">Older Posts →</a><% } %>
+	</nav>
 </main>
 
