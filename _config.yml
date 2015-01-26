@@ -1,7 +1,7 @@
 # config
 cover: /img/img-bg.jpg
 logo: /img/avatar.jpg
-bio: 我叫Wayne Ho
+bio: 五道口男子理工技术学院，黑科技爱好者
 
 # Content
 excerpt_link: READ MORE
@@ -11,9 +11,9 @@ menu:
   Home: /
   Archive: /archive
   Images: /images
-  Wiki: /wiki/2014-10-28-wiki/
+  Wiki: /wiki
   Favorites: /favorites
-  Contact: /about/2014-09-11-mabao/
+  Contact: /about
 
 ##Private: /private
 
