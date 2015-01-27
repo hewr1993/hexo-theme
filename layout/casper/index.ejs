@@ -7,7 +7,7 @@
 		<section class="flexslider">
 			<ul class="slides">
 		<% post.photos.forEach(function(photo, index) { %>
-			<li style="overflow:hidden"><a href="<%= photo %>" target="_blank"><img src="<%= photo %>" /></a></li>
+			<li style="overflow:hidden"><a rel="fancybox" href="<%= photo %>" target="_blank"><img src="<%= photo %>" /></a></li>
 		<% }); %>
 			</ul>
 		</section>
